@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.paas.model.fss.cav.mapper.FsCavBillMapper">
+  <resultMap id="BaseResultMap" type="com.paas.model.fss.cav.bean.FsCavBill">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="COMPANY_CODE" jdbcType="VARCHAR" property="companyCode" />
+    <result column="TRADE_CODE" jdbcType="VARCHAR" property="tradeCode" />
+    <result column="BILL_SOURCE" jdbcType="VARCHAR" property="billSource" />
+    <result column="BILL_CODE" jdbcType="VARCHAR" property="billCode" />
+    <result column="BILL_TYPE_CODE" jdbcType="VARCHAR" property="billTypeCode" />
+    <result column="BILL_TYPE_NAME" jdbcType="VARCHAR" property="billTypeName" />
+    <result column="BILL_DATE" jdbcType="TIMESTAMP" property="billDate" />
+    <result column="TAX_TOTAL_MONEY" jdbcType="DECIMAL" property="taxTotalMoney" />
+    <result column="NOTAX_TOTAL_MONEY" jdbcType="DECIMAL" property="notaxTotalMoney" />
+    <result column="TAX_MONEY" jdbcType="DECIMAL" property="taxMoney" />
+    <result column="VERIFIED_TOTAL_MONEY" jdbcType="DECIMAL" property="verifiedTotalMoney" />
+    <result column="NOVERIFY_TOTAL_MONEY" jdbcType="DECIMAL" property="noverifyTotalMoney" />
+    <result column="OPERATOR_CODE" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="OPERATOR_NAME" jdbcType="VARCHAR" property="operatorName" />
+    <result column="OPERATOR_DEPART_CODE" jdbcType="VARCHAR" property="operatorDepartCode" />
+    <result column="OPERATOR_DEPART_NAME" jdbcType="VARCHAR" property="operatorDepartName" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="BUSI_TYPE_CODE" jdbcType="VARCHAR" property="busiTypeCode" />
+    <result column="BUSI_TYPE_NAME" jdbcType="VARCHAR" property="busiTypeName" />
+    <result column="PAY_TYPE_CODE" jdbcType="VARCHAR" property="payTypeCode" />
+    <result column="PAY_TYPE_NAME" jdbcType="VARCHAR" property="payTypeName" />
+    <result column="SAP_VOUCHER_NUM" jdbcType="VARCHAR" property="sapVoucherNum" />
+    <result column="SAP_ACCOUNT_STATUS" jdbcType="VARCHAR" property="sapAccountStatus" />
+    <result column="ACCOUNT_DATE" jdbcType="TIMESTAMP" property="accountDate" />
+    <result column="REVIEWER_CODE" jdbcType="VARCHAR" property="reviewerCode" />
+    <result column="REVIEWER" jdbcType="VARCHAR" property="reviewer" />
+    <result column="REVIEW_DATE" jdbcType="TIMESTAMP" property="reviewDate" />
+    <result column="REVIEW_STAUTS" jdbcType="VARCHAR" property="reviewStauts" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="CAV_STATUS" jdbcType="CHAR" property="cavStatus" />
+    <result column="IS_FORCE_CAV" jdbcType="CHAR" property="isForceCav" />
+    <result column="SRC_BILL_CODE" jdbcType="VARCHAR" property="srcBillCode" />
+    <result column="IS_REV_CAV" jdbcType="CHAR" property="isRevCav" />
+    <result column="IS_BACK_EXTSYS" jdbcType="CHAR" property="isBackExtsys" />
+    <result column="IS_WITH_CAVBILL" jdbcType="CHAR" property="isWithCavbill" />
+    <result column="IS_COMPLETE_AUTOCAV" jdbcType="CHAR" property="isCompleteAutocav" />
+    <result column="ATTACHMENT_COUNT" jdbcType="DECIMAL" property="attachmentCount" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FS_CAV_BILL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.paas.model.fss.cav.bean.FsCavBill">
+    insert into FS_CAV_BILL (ID, COMPANY_CODE, TRADE_CODE, 
+      BILL_SOURCE, BILL_CODE, BILL_TYPE_CODE, 
+      BILL_TYPE_NAME, BILL_DATE, TAX_TOTAL_MONEY, 
+      NOTAX_TOTAL_MONEY, TAX_MONEY, VERIFIED_TOTAL_MONEY, 
+      NOVERIFY_TOTAL_MONEY, OPERATOR_CODE, OPERATOR_NAME, 
+      OPERATOR_DEPART_CODE, OPERATOR_DEPART_NAME, 
+      REMARK, BUSI_TYPE_CODE, BUSI_TYPE_NAME, 
+      PAY_TYPE_CODE, PAY_TYPE_NAME, SAP_VOUCHER_NUM, 
+      SAP_ACCOUNT_STATUS, ACCOUNT_DATE, REVIEWER_CODE, 
+      REVIEWER, REVIEW_DATE, REVIEW_STAUTS, 
+      CREATE_DATE, CAV_STATUS, IS_FORCE_CAV, 
+      SRC_BILL_CODE, IS_REV_CAV, IS_BACK_EXTSYS, 
+      IS_WITH_CAVBILL, IS_COMPLETE_AUTOCAV, ATTACHMENT_COUNT
+      )
+    values (#{id,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, #{tradeCode,jdbcType=VARCHAR}, 
+      #{billSource,jdbcType=VARCHAR}, #{billCode,jdbcType=VARCHAR}, #{billTypeCode,jdbcType=VARCHAR}, 
+      #{billTypeName,jdbcType=VARCHAR}, #{billDate,jdbcType=TIMESTAMP}, #{taxTotalMoney,jdbcType=DECIMAL}, 
+      #{notaxTotalMoney,jdbcType=DECIMAL}, #{taxMoney,jdbcType=DECIMAL}, #{verifiedTotalMoney,jdbcType=DECIMAL}, 
+      #{noverifyTotalMoney,jdbcType=DECIMAL}, #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, 
+      #{operatorDepartCode,jdbcType=VARCHAR}, #{operatorDepartName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{busiTypeCode,jdbcType=VARCHAR}, #{busiTypeName,jdbcType=VARCHAR}, 
+      #{payTypeCode,jdbcType=VARCHAR}, #{payTypeName,jdbcType=VARCHAR}, #{sapVoucherNum,jdbcType=VARCHAR}, 
+      #{sapAccountStatus,jdbcType=VARCHAR}, #{accountDate,jdbcType=TIMESTAMP}, #{reviewerCode,jdbcType=VARCHAR}, 
+      #{reviewer,jdbcType=VARCHAR}, #{reviewDate,jdbcType=TIMESTAMP}, #{reviewStauts,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{cavStatus,jdbcType=CHAR}, #{isForceCav,jdbcType=CHAR}, 
+      #{srcBillCode,jdbcType=VARCHAR}, #{isRevCav,jdbcType=CHAR}, #{isBackExtsys,jdbcType=CHAR}, 
+      #{isWithCavbill,jdbcType=CHAR}, #{isCompleteAutocav,jdbcType=CHAR}, #{attachmentCount,jdbcType=DECIMAL}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.paas.model.fss.cav.bean.FsCavBill">
+    update FS_CAV_BILL
+    set COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      TRADE_CODE = #{tradeCode,jdbcType=VARCHAR},
+      BILL_SOURCE = #{billSource,jdbcType=VARCHAR},
+      BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      BILL_TYPE_CODE = #{billTypeCode,jdbcType=VARCHAR},
+      BILL_TYPE_NAME = #{billTypeName,jdbcType=VARCHAR},
+      BILL_DATE = #{billDate,jdbcType=TIMESTAMP},
+      TAX_TOTAL_MONEY = #{taxTotalMoney,jdbcType=DECIMAL},
+      NOTAX_TOTAL_MONEY = #{notaxTotalMoney,jdbcType=DECIMAL},
+      TAX_MONEY = #{taxMoney,jdbcType=DECIMAL},
+      VERIFIED_TOTAL_MONEY = #{verifiedTotalMoney,jdbcType=DECIMAL},
+      NOVERIFY_TOTAL_MONEY = #{noverifyTotalMoney,jdbcType=DECIMAL},
+      OPERATOR_CODE = #{operatorCode,jdbcType=VARCHAR},
+      OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      OPERATOR_DEPART_CODE = #{operatorDepartCode,jdbcType=VARCHAR},
+      OPERATOR_DEPART_NAME = #{operatorDepartName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      BUSI_TYPE_CODE = #{busiTypeCode,jdbcType=VARCHAR},
+      BUSI_TYPE_NAME = #{busiTypeName,jdbcType=VARCHAR},
+      PAY_TYPE_CODE = #{payTypeCode,jdbcType=VARCHAR},
+      PAY_TYPE_NAME = #{payTypeName,jdbcType=VARCHAR},
+      SAP_VOUCHER_NUM = #{sapVoucherNum,jdbcType=VARCHAR},
+      SAP_ACCOUNT_STATUS = #{sapAccountStatus,jdbcType=VARCHAR},
+      ACCOUNT_DATE = #{accountDate,jdbcType=TIMESTAMP},
+      REVIEWER_CODE = #{reviewerCode,jdbcType=VARCHAR},
+      REVIEWER = #{reviewer,jdbcType=VARCHAR},
+      REVIEW_DATE = #{reviewDate,jdbcType=TIMESTAMP},
+      REVIEW_STAUTS = #{reviewStauts,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CAV_STATUS = #{cavStatus,jdbcType=CHAR},
+      IS_FORCE_CAV = #{isForceCav,jdbcType=CHAR},
+      SRC_BILL_CODE = #{srcBillCode,jdbcType=VARCHAR},
+      IS_REV_CAV = #{isRevCav,jdbcType=CHAR},
+      IS_BACK_EXTSYS = #{isBackExtsys,jdbcType=CHAR},
+      IS_WITH_CAVBILL = #{isWithCavbill,jdbcType=CHAR},
+      IS_COMPLETE_AUTOCAV = #{isCompleteAutocav,jdbcType=CHAR},
+      ATTACHMENT_COUNT = #{attachmentCount,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID, COMPANY_CODE, TRADE_CODE, BILL_SOURCE, BILL_CODE, BILL_TYPE_CODE, BILL_TYPE_NAME, 
+    BILL_DATE, TAX_TOTAL_MONEY, NOTAX_TOTAL_MONEY, TAX_MONEY, VERIFIED_TOTAL_MONEY, NOVERIFY_TOTAL_MONEY, 
+    OPERATOR_CODE, OPERATOR_NAME, OPERATOR_DEPART_CODE, OPERATOR_DEPART_NAME, REMARK, 
+    BUSI_TYPE_CODE, BUSI_TYPE_NAME, PAY_TYPE_CODE, PAY_TYPE_NAME, SAP_VOUCHER_NUM, SAP_ACCOUNT_STATUS, 
+    ACCOUNT_DATE, REVIEWER_CODE, REVIEWER, REVIEW_DATE, REVIEW_STAUTS, CREATE_DATE, CAV_STATUS, 
+    IS_FORCE_CAV, SRC_BILL_CODE, IS_REV_CAV, IS_BACK_EXTSYS, IS_WITH_CAVBILL, IS_COMPLETE_AUTOCAV, 
+    ATTACHMENT_COUNT
+    from FS_CAV_BILL
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, COMPANY_CODE, TRADE_CODE, BILL_SOURCE, BILL_CODE, BILL_TYPE_CODE, BILL_TYPE_NAME, 
+    BILL_DATE, TAX_TOTAL_MONEY, NOTAX_TOTAL_MONEY, TAX_MONEY, VERIFIED_TOTAL_MONEY, NOVERIFY_TOTAL_MONEY, 
+    OPERATOR_CODE, OPERATOR_NAME, OPERATOR_DEPART_CODE, OPERATOR_DEPART_NAME, REMARK, 
+    BUSI_TYPE_CODE, BUSI_TYPE_NAME, PAY_TYPE_CODE, PAY_TYPE_NAME, SAP_VOUCHER_NUM, SAP_ACCOUNT_STATUS, 
+    ACCOUNT_DATE, REVIEWER_CODE, REVIEWER, REVIEW_DATE, REVIEW_STAUTS, CREATE_DATE, CAV_STATUS, 
+    IS_FORCE_CAV, SRC_BILL_CODE, IS_REV_CAV, IS_BACK_EXTSYS, IS_WITH_CAVBILL, IS_COMPLETE_AUTOCAV, 
+    ATTACHMENT_COUNT
+    from FS_CAV_BILL
+  </select>
+  <resultMap id="BaseResultMap" type="com.paas.model.fss.cav.bean.FsCavBill">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="COMPANY_CODE" jdbcType="VARCHAR" property="companyCode" />
+    <result column="BILL_SOURCE" jdbcType="VARCHAR" property="billSource" />
+    <result column="BILL_CODE" jdbcType="VARCHAR" property="billCode" />
+    <result column="BILL_TYPE_CODE" jdbcType="VARCHAR" property="billTypeCode" />
+    <result column="BILL_TYPE_NAME" jdbcType="VARCHAR" property="billTypeName" />
+    <result column="BILL_DATE" jdbcType="TIMESTAMP" property="billDate" />
+    <result column="TAX_TOTAL_MONEY" jdbcType="DECIMAL" property="taxTotalMoney" />
+    <result column="NOTAX_TOTAL_MONEY" jdbcType="DECIMAL" property="notaxTotalMoney" />
+    <result column="TAX_MONEY" jdbcType="DECIMAL" property="taxMoney" />
+    <result column="VERIFIED_TOTAL_MONEY" jdbcType="DECIMAL" property="verifiedTotalMoney" />
+    <result column="NOVERIFY_TOTAL_MONEY" jdbcType="DECIMAL" property="noverifyTotalMoney" />
+    <result column="OPERATOR_NAME" jdbcType="VARCHAR" property="operatorName" />
+    <result column="OPERATOR_DEPART" jdbcType="VARCHAR" property="operatorDepart" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="BUSI_TYPE_CODE" jdbcType="VARCHAR" property="busiTypeCode" />
+    <result column="BUSI_TYPE_NAME" jdbcType="VARCHAR" property="busiTypeName" />
+    <result column="PAY_TYPE_CODE" jdbcType="VARCHAR" property="payTypeCode" />
+    <result column="PAY_TYPE_NAME" jdbcType="VARCHAR" property="payTypeName" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from FS_CAV_BILL
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.paas.model.fss.cav.bean.FsCavBill">
+    insert into FS_CAV_BILL (ID, COMPANY_CODE, BILL_SOURCE, 
+      BILL_CODE, BILL_TYPE_CODE, BILL_TYPE_NAME, 
+      BILL_DATE, TAX_TOTAL_MONEY, NOTAX_TOTAL_MONEY, 
+      TAX_MONEY, VERIFIED_TOTAL_MONEY, NOVERIFY_TOTAL_MONEY, 
+      OPERATOR_NAME, OPERATOR_DEPART, REMARK, 
+      BUSI_TYPE_CODE, BUSI_TYPE_NAME, PAY_TYPE_CODE, 
+      PAY_TYPE_NAME)
+    values (#{id,jdbcType=DECIMAL}, #{companyCode,jdbcType=VARCHAR}, #{billSource,jdbcType=VARCHAR}, 
+      #{billCode,jdbcType=VARCHAR}, #{billTypeCode,jdbcType=VARCHAR}, #{billTypeName,jdbcType=VARCHAR}, 
+      #{billDate,jdbcType=TIMESTAMP}, #{taxTotalMoney,jdbcType=DECIMAL}, #{notaxTotalMoney,jdbcType=DECIMAL}, 
+      #{taxMoney,jdbcType=DECIMAL}, #{verifiedTotalMoney,jdbcType=DECIMAL}, #{noverifyTotalMoney,jdbcType=DECIMAL}, 
+      #{operatorName,jdbcType=VARCHAR}, #{operatorDepart,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{busiTypeCode,jdbcType=VARCHAR}, #{busiTypeName,jdbcType=VARCHAR}, #{payTypeCode,jdbcType=VARCHAR}, 
+      #{payTypeName,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.paas.model.fss.cav.bean.FsCavBill">
+    update FS_CAV_BILL
+    set COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      BILL_SOURCE = #{billSource,jdbcType=VARCHAR},
+      BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      BILL_TYPE_CODE = #{billTypeCode,jdbcType=VARCHAR},
+      BILL_TYPE_NAME = #{billTypeName,jdbcType=VARCHAR},
+      BILL_DATE = #{billDate,jdbcType=TIMESTAMP},
+      TAX_TOTAL_MONEY = #{taxTotalMoney,jdbcType=DECIMAL},
+      NOTAX_TOTAL_MONEY = #{notaxTotalMoney,jdbcType=DECIMAL},
+      TAX_MONEY = #{taxMoney,jdbcType=DECIMAL},
+      VERIFIED_TOTAL_MONEY = #{verifiedTotalMoney,jdbcType=DECIMAL},
+      NOVERIFY_TOTAL_MONEY = #{noverifyTotalMoney,jdbcType=DECIMAL},
+      OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      OPERATOR_DEPART = #{operatorDepart,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      BUSI_TYPE_CODE = #{busiTypeCode,jdbcType=VARCHAR},
+      BUSI_TYPE_NAME = #{busiTypeName,jdbcType=VARCHAR},
+      PAY_TYPE_CODE = #{payTypeCode,jdbcType=VARCHAR},
+      PAY_TYPE_NAME = #{payTypeName,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select ID, COMPANY_CODE, BILL_SOURCE, BILL_CODE, BILL_TYPE_CODE, BILL_TYPE_NAME, 
+    BILL_DATE, TAX_TOTAL_MONEY, NOTAX_TOTAL_MONEY, TAX_MONEY, VERIFIED_TOTAL_MONEY, NOVERIFY_TOTAL_MONEY, 
+    OPERATOR_NAME, OPERATOR_DEPART, REMARK, BUSI_TYPE_CODE, BUSI_TYPE_NAME, PAY_TYPE_CODE, 
+    PAY_TYPE_NAME
+    from FS_CAV_BILL
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, COMPANY_CODE, BILL_SOURCE, BILL_CODE, BILL_TYPE_CODE, BILL_TYPE_NAME, 
+    BILL_DATE, TAX_TOTAL_MONEY, NOTAX_TOTAL_MONEY, TAX_MONEY, VERIFIED_TOTAL_MONEY, NOVERIFY_TOTAL_MONEY, 
+    OPERATOR_NAME, OPERATOR_DEPART, REMARK, BUSI_TYPE_CODE, BUSI_TYPE_NAME, PAY_TYPE_CODE, 
+    PAY_TYPE_NAME
+    from FS_CAV_BILL
+  </select>
+  <resultMap id="BaseResultMap" type="com.paas.model.fss.cav.bean.FsCavBill">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="COMPANY_CODE" jdbcType="VARCHAR" property="companyCode" />
+    <result column="TRADE_CODE" jdbcType="VARCHAR" property="tradeCode" />
+    <result column="BILL_SOURCE" jdbcType="VARCHAR" property="billSource" />
+    <result column="BILL_CODE" jdbcType="VARCHAR" property="billCode" />
+    <result column="BILL_TYPE_CODE" jdbcType="VARCHAR" property="billTypeCode" />
+    <result column="BILL_TYPE_NAME" jdbcType="VARCHAR" property="billTypeName" />
+    <result column="BILL_DATE" jdbcType="TIMESTAMP" property="billDate" />
+    <result column="TAX_TOTAL_MONEY" jdbcType="DECIMAL" property="taxTotalMoney" />
+    <result column="NOTAX_TOTAL_MONEY" jdbcType="DECIMAL" property="notaxTotalMoney" />
+    <result column="TAX_MONEY" jdbcType="DECIMAL" property="taxMoney" />
+    <result column="VERIFIED_TOTAL_MONEY" jdbcType="DECIMAL" property="verifiedTotalMoney" />
+    <result column="NOVERIFY_TOTAL_MONEY" jdbcType="DECIMAL" property="noverifyTotalMoney" />
+    <result column="OPERATOR_CODE" jdbcType="VARCHAR" property="operatorCode" />
+    <result column="OPERATOR_NAME" jdbcType="VARCHAR" property="operatorName" />
+    <result column="OPERATOR_DEPART_CODE" jdbcType="VARCHAR" property="operatorDepartCode" />
+    <result column="OPERATOR_DEPART_NAME" jdbcType="VARCHAR" property="operatorDepartName" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="BUSI_TYPE_CODE" jdbcType="VARCHAR" property="busiTypeCode" />
+    <result column="BUSI_TYPE_NAME" jdbcType="VARCHAR" property="busiTypeName" />
+    <result column="PAY_TYPE_CODE" jdbcType="VARCHAR" property="payTypeCode" />
+    <result column="PAY_TYPE_NAME" jdbcType="VARCHAR" property="payTypeName" />
+    <result column="SAP_VOUCHER_NUM" jdbcType="VARCHAR" property="sapVoucherNum" />
+    <result column="SAP_ACCOUNT_STATUS" jdbcType="VARCHAR" property="sapAccountStatus" />
+    <result column="ACCOUNT_DATE" jdbcType="TIMESTAMP" property="accountDate" />
+    <result column="REVIEWER_CODE" jdbcType="VARCHAR" property="reviewerCode" />
+    <result column="REVIEWER" jdbcType="VARCHAR" property="reviewer" />
+    <result column="REVIEW_DATE" jdbcType="TIMESTAMP" property="reviewDate" />
+    <result column="REVIEW_STAUTS" jdbcType="VARCHAR" property="reviewStauts" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="CAV_STATUS" jdbcType="CHAR" property="cavStatus" />
+    <result column="IS_FORCE_CAV" jdbcType="CHAR" property="isForceCav" />
+    <result column="SRC_BILL_CODE" jdbcType="VARCHAR" property="srcBillCode" />
+    <result column="IS_REV_CAV" jdbcType="CHAR" property="isRevCav" />
+    <result column="IS_BACK_EXTSYS" jdbcType="CHAR" property="isBackExtsys" />
+    <result column="IS_WITH_CAVBILL" jdbcType="CHAR" property="isWithCavbill" />
+    <result column="IS_COMPLETE_AUTOCAV" jdbcType="CHAR" property="isCompleteAutocav" />
+    <result column="ATTACHMENT_COUNT" jdbcType="DECIMAL" property="attachmentCount" />
+    <result column="IS_BACK_EXTSYS_1" jdbcType="CHAR" property="isBackExtsys1" />
+    <result column="SAP_RESP_DESC" jdbcType="VARCHAR" property="sapRespDesc" />
+    <result column="IS_BACK_EXTSYS_SAP" jdbcType="CHAR" property="isBackExtsysSap" />
+    <result column="SAP_NUM" jdbcType="VARCHAR" property="sapNum" />
+    <result column="BUSI_APPLY_NO" jdbcType="VARCHAR" property="busiApplyNo" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from FS_CAV_BILL
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.paas.model.fss.cav.bean.FsCavBill">
+    insert into FS_CAV_BILL (ID, COMPANY_CODE, TRADE_CODE, 
+      BILL_SOURCE, BILL_CODE, BILL_TYPE_CODE, 
+      BILL_TYPE_NAME, BILL_DATE, TAX_TOTAL_MONEY, 
+      NOTAX_TOTAL_MONEY, TAX_MONEY, VERIFIED_TOTAL_MONEY, 
+      NOVERIFY_TOTAL_MONEY, OPERATOR_CODE, OPERATOR_NAME, 
+      OPERATOR_DEPART_CODE, OPERATOR_DEPART_NAME, 
+      REMARK, BUSI_TYPE_CODE, BUSI_TYPE_NAME, 
+      PAY_TYPE_CODE, PAY_TYPE_NAME, SAP_VOUCHER_NUM, 
+      SAP_ACCOUNT_STATUS, ACCOUNT_DATE, REVIEWER_CODE, 
+      REVIEWER, REVIEW_DATE, REVIEW_STAUTS, 
+      CREATE_DATE, CAV_STATUS, IS_FORCE_CAV, 
+      SRC_BILL_CODE, IS_REV_CAV, IS_BACK_EXTSYS, 
+      IS_WITH_CAVBILL, IS_COMPLETE_AUTOCAV, ATTACHMENT_COUNT, 
+      IS_BACK_EXTSYS_1, SAP_RESP_DESC, IS_BACK_EXTSYS_SAP, 
+      SAP_NUM, BUSI_APPLY_NO)
+    values (#{id,jdbcType=VARCHAR}, #{companyCode,jdbcType=VARCHAR}, #{tradeCode,jdbcType=VARCHAR}, 
+      #{billSource,jdbcType=VARCHAR}, #{billCode,jdbcType=VARCHAR}, #{billTypeCode,jdbcType=VARCHAR}, 
+      #{billTypeName,jdbcType=VARCHAR}, #{billDate,jdbcType=TIMESTAMP}, #{taxTotalMoney,jdbcType=DECIMAL}, 
+      #{notaxTotalMoney,jdbcType=DECIMAL}, #{taxMoney,jdbcType=DECIMAL}, #{verifiedTotalMoney,jdbcType=DECIMAL}, 
+      #{noverifyTotalMoney,jdbcType=DECIMAL}, #{operatorCode,jdbcType=VARCHAR}, #{operatorName,jdbcType=VARCHAR}, 
+      #{operatorDepartCode,jdbcType=VARCHAR}, #{operatorDepartName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{busiTypeCode,jdbcType=VARCHAR}, #{busiTypeName,jdbcType=VARCHAR}, 
+      #{payTypeCode,jdbcType=VARCHAR}, #{payTypeName,jdbcType=VARCHAR}, #{sapVoucherNum,jdbcType=VARCHAR}, 
+      #{sapAccountStatus,jdbcType=VARCHAR}, #{accountDate,jdbcType=TIMESTAMP}, #{reviewerCode,jdbcType=VARCHAR}, 
+      #{reviewer,jdbcType=VARCHAR}, #{reviewDate,jdbcType=TIMESTAMP}, #{reviewStauts,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{cavStatus,jdbcType=CHAR}, #{isForceCav,jdbcType=CHAR}, 
+      #{srcBillCode,jdbcType=VARCHAR}, #{isRevCav,jdbcType=CHAR}, #{isBackExtsys,jdbcType=CHAR}, 
+      #{isWithCavbill,jdbcType=CHAR}, #{isCompleteAutocav,jdbcType=CHAR}, #{attachmentCount,jdbcType=DECIMAL}, 
+      #{isBackExtsys1,jdbcType=CHAR}, #{sapRespDesc,jdbcType=VARCHAR}, #{isBackExtsysSap,jdbcType=CHAR}, 
+      #{sapNum,jdbcType=VARCHAR}, #{busiApplyNo,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.paas.model.fss.cav.bean.FsCavBill">
+    update FS_CAV_BILL
+    set COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      TRADE_CODE = #{tradeCode,jdbcType=VARCHAR},
+      BILL_SOURCE = #{billSource,jdbcType=VARCHAR},
+      BILL_CODE = #{billCode,jdbcType=VARCHAR},
+      BILL_TYPE_CODE = #{billTypeCode,jdbcType=VARCHAR},
+      BILL_TYPE_NAME = #{billTypeName,jdbcType=VARCHAR},
+      BILL_DATE = #{billDate,jdbcType=TIMESTAMP},
+      TAX_TOTAL_MONEY = #{taxTotalMoney,jdbcType=DECIMAL},
+      NOTAX_TOTAL_MONEY = #{notaxTotalMoney,jdbcType=DECIMAL},
+      TAX_MONEY = #{taxMoney,jdbcType=DECIMAL},
+      VERIFIED_TOTAL_MONEY = #{verifiedTotalMoney,jdbcType=DECIMAL},
+      NOVERIFY_TOTAL_MONEY = #{noverifyTotalMoney,jdbcType=DECIMAL},
+      OPERATOR_CODE = #{operatorCode,jdbcType=VARCHAR},
+      OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      OPERATOR_DEPART_CODE = #{operatorDepartCode,jdbcType=VARCHAR},
+      OPERATOR_DEPART_NAME = #{operatorDepartName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      BUSI_TYPE_CODE = #{busiTypeCode,jdbcType=VARCHAR},
+      BUSI_TYPE_NAME = #{busiTypeName,jdbcType=VARCHAR},
+      PAY_TYPE_CODE = #{payTypeCode,jdbcType=VARCHAR},
+      PAY_TYPE_NAME = #{payTypeName,jdbcType=VARCHAR},
+      SAP_VOUCHER_NUM = #{sapVoucherNum,jdbcType=VARCHAR},
+      SAP_ACCOUNT_STATUS = #{sapAccountStatus,jdbcType=VARCHAR},
+      ACCOUNT_DATE = #{accountDate,jdbcType=TIMESTAMP},
+      REVIEWER_CODE = #{reviewerCode,jdbcType=VARCHAR},
+      REVIEWER = #{reviewer,jdbcType=VARCHAR},
+      REVIEW_DATE = #{reviewDate,jdbcType=TIMESTAMP},
+      REVIEW_STAUTS = #{reviewStauts,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      CAV_STATUS = #{cavStatus,jdbcType=CHAR},
+      IS_FORCE_CAV = #{isForceCav,jdbcType=CHAR},
+      SRC_BILL_CODE = #{srcBillCode,jdbcType=VARCHAR},
+      IS_REV_CAV = #{isRevCav,jdbcType=CHAR},
+      IS_BACK_EXTSYS = #{isBackExtsys,jdbcType=CHAR},
+      IS_WITH_CAVBILL = #{isWithCavbill,jdbcType=CHAR},
+      IS_COMPLETE_AUTOCAV = #{isCompleteAutocav,jdbcType=CHAR},
+      ATTACHMENT_COUNT = #{attachmentCount,jdbcType=DECIMAL},
+      IS_BACK_EXTSYS_1 = #{isBackExtsys1,jdbcType=CHAR},
+      SAP_RESP_DESC = #{sapRespDesc,jdbcType=VARCHAR},
+      IS_BACK_EXTSYS_SAP = #{isBackExtsysSap,jdbcType=CHAR},
+      SAP_NUM = #{sapNum,jdbcType=VARCHAR},
+      BUSI_APPLY_NO = #{busiApplyNo,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select ID, COMPANY_CODE, TRADE_CODE, BILL_SOURCE, BILL_CODE, BILL_TYPE_CODE, BILL_TYPE_NAME, 
+    BILL_DATE, TAX_TOTAL_MONEY, NOTAX_TOTAL_MONEY, TAX_MONEY, VERIFIED_TOTAL_MONEY, NOVERIFY_TOTAL_MONEY, 
+    OPERATOR_CODE, OPERATOR_NAME, OPERATOR_DEPART_CODE, OPERATOR_DEPART_NAME, REMARK, 
+    BUSI_TYPE_CODE, BUSI_TYPE_NAME, PAY_TYPE_CODE, PAY_TYPE_NAME, SAP_VOUCHER_NUM, SAP_ACCOUNT_STATUS, 
+    ACCOUNT_DATE, REVIEWER_CODE, REVIEWER, REVIEW_DATE, REVIEW_STAUTS, CREATE_DATE, CAV_STATUS, 
+    IS_FORCE_CAV, SRC_BILL_CODE, IS_REV_CAV, IS_BACK_EXTSYS, IS_WITH_CAVBILL, IS_COMPLETE_AUTOCAV, 
+    ATTACHMENT_COUNT, IS_BACK_EXTSYS_1, SAP_RESP_DESC, IS_BACK_EXTSYS_SAP, SAP_NUM, BUSI_APPLY_NO
+    from FS_CAV_BILL
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, COMPANY_CODE, TRADE_CODE, BILL_SOURCE, BILL_CODE, BILL_TYPE_CODE, BILL_TYPE_NAME, 
+    BILL_DATE, TAX_TOTAL_MONEY, NOTAX_TOTAL_MONEY, TAX_MONEY, VERIFIED_TOTAL_MONEY, NOVERIFY_TOTAL_MONEY, 
+    OPERATOR_CODE, OPERATOR_NAME, OPERATOR_DEPART_CODE, OPERATOR_DEPART_NAME, REMARK, 
+    BUSI_TYPE_CODE, BUSI_TYPE_NAME, PAY_TYPE_CODE, PAY_TYPE_NAME, SAP_VOUCHER_NUM, SAP_ACCOUNT_STATUS, 
+    ACCOUNT_DATE, REVIEWER_CODE, REVIEWER, REVIEW_DATE, REVIEW_STAUTS, CREATE_DATE, CAV_STATUS, 
+    IS_FORCE_CAV, SRC_BILL_CODE, IS_REV_CAV, IS_BACK_EXTSYS, IS_WITH_CAVBILL, IS_COMPLETE_AUTOCAV, 
+    ATTACHMENT_COUNT, IS_BACK_EXTSYS_1, SAP_RESP_DESC, IS_BACK_EXTSYS_SAP, SAP_NUM, BUSI_APPLY_NO
+    from FS_CAV_BILL
+  </select>
+</mapper>
